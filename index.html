@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Training : AngularJS" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Training</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/mrkane1911/training">View on GitHub</a>
+
+          <h1 id="project_title">Training</h1>
+          <h2 id="project_tagline">AngularJS</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/mrkane1911/training/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/mrkane1911/training/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="angularjs-training" class="anchor" href="#angularjs-training"><span class="octicon octicon-link"></span></a>AngularJS Training</h1>
+
+<p>From my research, tutorials, training videos etc. The list below is a pretty good take on what you should focus on when going through AngularJS. I have also included some resources below the list.</p>
+
+<ul>
+<li>Introduction to Single-Page-Apps, and how they contrast with traditional server centric web apps</li>
+<li>Where is AngularJS a good fit? Where is it not a good fit?</li>
+<li>Bindings: declarative connections between data and on-screen elements</li>
+<li>Controllers</li>
+<li>Scopes, including Root Scope and Isolated Scopes</li>
+<li>Scope should hold the model, not be the model</li>
+<li>Routing</li>
+<li>Using and writing filters</li>
+<li>Forms and validation</li>
+<li>Organizing your code with modules; how AngularJS modules compare with other module systems</li>
+<li>Dependency injection</li>
+<li>Services and Factories</li>
+<li>Directives: extending HTML to create abstractions for your application</li>
+<li>Events and event propagation</li>
+<li>Unit Testing with Jasmine and Karma</li>
+<li>End to end testing with Protractor</li>
+<li>Promises, and their pervasive use</li>
+<li>Batarang Debug Tool</li>
+<li>Alternate HTML syntax (Jade)</li>
+<li><p>Misc. AngularJS Topics</p></li>
+<li><p>Interacting with a backend / server with $http and Restangular</p></li>
+<li>build a small, real application</li>
+</ul><h2>
+<a name="resources" class="anchor" href="#resources"><span class="octicon octicon-link"></span></a>Resources</h2>
+
+<p><a href="http://www.lynda.com/AngularJS-tutorials/Up-Running-AngularJS/154414-2.html">http://www.lynda.com/AngularJS-tutorials/Up-Running-AngularJS/154414-2.html</a></p>
+
+<p>Access above through people portal, search for Lynda.com and you can login through the Sapient account if you haven’t done so in the past. </p>
+
+<h3>
+<a name="the-two-below-are-just-two-quick-tutorials-to-get-you-going" class="anchor" href="#the-two-below-are-just-two-quick-tutorials-to-get-you-going"><span class="octicon octicon-link"></span></a>The two below are just two quick tutorials to get you going.</h3>
+
+<p><a href="http://www.revillweb.com/tutorials/angularjs-in-30-minutes-angularjs-tutorial/">http://www.revillweb.com/tutorials/angularjs-in-30-minutes-angularjs-tutorial/</a></p>
+
+<p><a href="http://code.tutsplus.com/tutorials/building-a-web-app-from-scratch-in-angularjs--net-32944">http://code.tutsplus.com/tutorials/building-a-web-app-from-scratch-in-angularjs--net-32944</a></p>
+
+<h2>
+<a name="tutorial" class="anchor" href="#tutorial"><span class="octicon octicon-link"></span></a>Tutorial</h2>
+
+<h4>
+<a name="structure-of-an-application-using-angular-js" class="anchor" href="#structure-of-an-application-using-angular-js"><span class="octicon octicon-link"></span></a>Structure of an application using Angular JS</h4>
+
+<p><a href="http://cdpn.io/cdACy">See it in Action</a></p>
+
+<p>An application using Angular JS must have following components:</p>
+
+<ol>
+<li>Reference to Angular JS library</li>
+<li>A JavaScript controller containing data or with logic to fetch data</li>
+</ol><p>We have to add the <a href="http://docs.angularjs.org/api/ng.directive:ngApp">ng-app</a> declaration to a portion of the page that uses features of Angular JS. It can be added to a div inside a page wherein we have to use some expressions of Angular JS. If it is needed for the entire page, we have to add the ng-app declaration to the body tag.</p>
+
+<pre><code>&lt;div ng-app&gt;
+ &lt;!-- Your markup goes here --&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h4>
+<a name="a-demo-showing-some-data-binding-features-of-angular-js" class="anchor" href="#a-demo-showing-some-data-binding-features-of-angular-js"><span class="octicon octicon-link"></span></a>A demo showing some data binding features of Angular JS</h4>
+
+<p>Let’s create a shopping cart. We will add the features to calculate total price of the cart, adding items to cart and removing items from cart. We have to add this logic to the controller. An Angular JS controller must follow the following conventions:</p>
+
+<ol>
+<li>It should be a JavaScript function accepting an argument named $scope</li>
+<li>All of the model variables and functions should be added to the $scope object</li>
+<li>Controllers are usually suffixed with Ctrl, but it is not necessary</li>
+</ol><p>Following is the controller with the required functionalities added:</p>
+
+<pre><code>function ShoppingCartCtrl($scope)  {
+    $scope.items = [
+        {Name: "Soap", Price: "25", Quantity: "10"},
+        {Name: "Shaving cream", Price: "50", Quantity: "15"},
+        {Name: "Shampoo", Price: "100", Quantity: "5"}
+    ];
+
+    $scope.addItem = function(item) {
+        $scope.items.push(item);
+ $scope.item = {};
+    }
+
+    $scope.totalPrice = function(){
+        var total = 0;
+ for(count=0;count&lt;$scope.items.length;count++){
+     total += $scope.items[count].Price*$scope.items[count].Quantity;
+ }
+ return total;
+    }
+
+    $scope.removeItem = function(index){
+        $scope.items.splice(index,1);
+    }
+}
+</code></pre>
+
+<p>To bind data using members of the controller, we have to specify the controller using <a href="http://docs.angularjs.org/api/ng.directive:ngController">ng-controller</a> directive. Ensure that the element containing ng-controller directive is a child of an element declared as ng-app.</p>
+
+<pre><code>&lt;div ng-app&gt;
+    &lt;div ng-controller="ShoppingCartCtrl"&gt;
+        &lt;!-- Your markup goes here --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Let’s display the items added to items array in a table. Let’s also add a button on each row to remove the item. We have to use the following blocks to achieve this:</p>
+
+<ol>
+<li>
+<a href="http://docs.angularjs.org/api/ng.directive:ngRepeat">ng-repeat</a> directive to iterate through items</li>
+<li>Binding controller’s properties using {{}}</li>
+<li>
+<a href="http://docs.angularjs.org/api/ng.directive:ngClick">ng-click</a> directive to bind button click event</li>
+<li>$index to use current index in an array</li>
+</ol><p>Following is the table displaying items:</p>
+
+<pre><code>&lt;table border="1"&gt;
+ &lt;thead&gt;
+     &lt;tr&gt;
+        &lt;td&gt;Name&lt;/td&gt;
+        &lt;td&gt;Price&lt;/td&gt;
+        &lt;td&gt;Quantity&lt;/td&gt;
+        &lt;td&gt;Remove Item&lt;/td&gt;
+     &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+     &lt;tr ng-repeat="item in items"&gt;
+          &lt;td&gt;{{item.Name}}&lt;/td&gt;
+          &lt;td&gt;{{item.Price}}&lt;/td&gt;
+          &lt;td&gt;{{item.Quantity}}&lt;/td&gt;
+          &lt;td&gt;&lt;input type="button" value="Remove" ng-click="removeItem($index)" /&gt;&lt;/td&gt;
+     &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p>Let’s display the total price of cart below this table. For this, we need to call the totalPrice() function of controller.</p>
+
+<pre><code>&lt;div&gt;Total Price: {{totalPrice()}}&lt;/div&gt;
+</code></pre>
+
+<p>Finally, let’s add a form to accept values from user and add the new item to items array. We have to use ng-model directive to automatically add an input field to a property of the controller. Following is the form:</p>
+
+<pre><code>&lt;table&gt;
+ &lt;tr&gt;
+  &lt;td&gt;Name: &lt;/td&gt;
+  &lt;td&gt;&lt;input type="text" ng-model="item.Name" /&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td&gt;Price: &lt;/td&gt;
+  &lt;td&gt;&lt;input type="text" ng-model="item.Price" /&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td&gt;Quantity: &lt;/td&gt;
+  &lt;td&gt;&lt;input type="text" ng-model="item.Quantity" /&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td colspan="2"&gt;&lt;input type="Button" value="Add" ng-click="addItem(item)" /&gt; &lt;/td&gt;   
+ &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p>When we enter something in the text boxes, a property named item is automatically added to $scope. This property is used in the addItem function. </p>
+
+<h4>
+<a name="you-can-play-around-with-the-finished-app-by-clicking-here" class="anchor" href="#you-can-play-around-with-the-finished-app-by-clicking-here"><span class="octicon octicon-link"></span></a>You can play around with the finished app by <a href="http://cdpn.io/cdACy">Clicking Here</a>
+</h4>
+
+<p>As we saw, two-way data binding is made very easy using directives and binding syntax of Angular JS. All we need is a controller with some members in it. We don’t need to invoke any special functions to send notification when something changes in the controller. Everything is available for free to us, all we need to do is follow the conventions. </p>
+
+<p>We will explore other features of Angular JS in future posts. </p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Training maintained by <a href="https://github.com/mrkane1911">mrkane1911</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
